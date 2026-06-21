@@ -1,2 +1,40 @@
 # official-app-resource
-HTML page archive and documentation
+
+本仓库用于归档和发布多个独立的 HTML 页面资源。这些页面通常作为特定功能的轻量级呈现，不依赖后端服务，可直接在浏览器中打开。
+
+## 仓库结构
+
+```
+official-app-resource/
+├── pages/          # 存放各独立 HTML 页面
+├── assets/         # 页面引用的静态资源（样式、脚本、图片等）
+└── README.md       # 本说明文件
+```
+
+- `pages/`：每个子目录或文件对应一个独立页面，命名清晰，便于识别。
+- `assets/`：公共资源文件，按类型组织，例如 `css/`、`js/`、`images/`。
+
+## 页面归档说明
+
+- 所有页面均为独立 HTML 文件，可直接通过文件路径或静态托管服务访问。
+- 页面内容不针对特定网站或域名，仅作为通用功能展示或工具使用。
+- 归档的页面可能包含示例数据、占位内容或模拟交互，请勿用于生产环境。
+
+## 维护说明
+
+- 本仓库由维护者不定期更新，新增页面或修正已有页面。
+- 如果发现页面显示异常或链接失效，请提交 Issue 反馈。
+- 欢迎提交 Pull Request 改进页面样式或修复问题，但请保持页面独立性和通用性。
+
+## 使用方式
+
+1. 克隆仓库到本地：
+   ```bash
+   git clone https://github.com/your-username/official-app-resource.git
+   ```
+2. 直接在浏览器中打开 `pages/` 下的 HTML 文件即可查看。
+3. 也可将整个仓库部署到静态托管服务（如 GitHub Pages）进行在线访问。
+
+## 许可
+
+本项目采用 MIT 许可证。详情请参阅 [LICENSE](LICENSE) 文件。
