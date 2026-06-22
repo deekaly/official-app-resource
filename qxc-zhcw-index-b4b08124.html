@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>七星彩 · 信息一览</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fbfbfa;
+      color: #1e2b3a;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2.4rem 1.6rem 4rem;
+    }
+
+    /* 极简留白 + 窄正文宽度 */
+    h1, h2 {
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 0.35em;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-top: 0.8rem;
+      color: #0f1a28;
+      border-left: 3px solid #1f5e8c;
+      padding-left: 1rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 2.8rem;
+      margin-bottom: 0.8rem;
+      color: #1f3b4f;
+      border-bottom: 1px solid #e2e8ed;
+      padding-bottom: 0.3rem;
+    }
+
+    p, li {
+      color: #2b3f51;
+      margin-bottom: 0.9rem;
+      font-size: 0.98rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #6a8b9f;
+      font-weight: 300;
+    }
+
+    /* 卡片区 – 克制但有层次 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin: 2rem 0 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #eaeef2;
+      border-radius: 14px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: #b6cad8;
+      box-shadow: 0 2px 8px rgba(24, 60, 84, 0.04);
+    }
+
+    .card-header {
+      font-weight: 500;
+      font-size: 1.08rem;
+      margin-bottom: 0.5rem;
+      color: #153547;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-header span {
+      font-size: 1.2rem;
+      margin-right: 0.3rem;
+    }
+
+    .card p {
+      font-size: 0.94rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .tag-group {
+      margin-top: 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.6rem;
+    }
+
+    .tag {
+      background: #f0f4f7;
+      border-radius: 20px;
+      padding: 0.2rem 1rem;
+      font-size: 0.82rem;
+      color: #1b4056;
+      display: inline-block;
+      letter-spacing: 0.02em;
+    }
+
+    .link-sentence {
+      background: #f6f9fb;
+      border-radius: 12px;
+      padding: 1.2rem 1.6rem;
+      margin: 2.2rem 0 1.8rem;
+      border-left: 3px solid #1f5e8c;
+    }
+
+    .link-sentence p {
+      margin-bottom: 0;
+      font-size: 0.98rem;
+    }
+
+    a {
+      color: #1a638c;
+      text-decoration: none;
+      border-bottom: 1px solid #b8cfdf;
+      transition: border-color 0.2s, color 0.2s;
+      font-weight: 450;
+    }
+
+    a:hover {
+      border-bottom-color: #1a638c;
+      color: #0e3f5c;
+    }
+
+    .faq-summary {
+      margin-top: 2.8rem;
+      background: #fafcfd;
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      border: 1px solid #dee6ec;
+    }
+
+    .faq-summary p {
+      font-size: 0.92rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .faq-summary strong {
+      font-weight: 500;
+      color: #0f2f40;
+    }
+
+    .meta-note {
+      text-align: right;
+      font-size: 0.78rem;
+      color: #7c8d9c;
+      margin-top: 2.5rem;
+      border-top: 1px solid #e7edf2;
+      padding-top: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* 响应式微调 */
+    @media (min-width: 600px) {
+      .page { padding: 3.2rem 2.4rem 5rem; }
+      h1 { font-size: 2.6rem; }
+      .card-grid { gap: 1.6rem; }
+    }
+
+    @media (max-width: 440px) {
+      .card { padding: 1rem 1.2rem; }
+      .link-sentence { padding: 1rem 1.2rem; }
+      h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- hero 精简 -->
+    <h1>七星彩 · 结构说明</h1>
+    <p style="font-size: 1rem; color: #385b73; margin-top: -0.2rem;">
+      位置对应 · 数字组合 · 信息稳定
+    </p>
+
+    <!-- 卡片式主视觉：稳定入口说明 -->
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-header"><span>📌</span> 主视觉 · 入口定位</div>
+        <p>访问 <a href="https://qxc-zhcw.com">七星彩</a> 即进入一个基于固定页面结构的说明区域。页面不依赖动态跳转，所有内容围绕七星彩的规则与组合逻辑展开，适合快速查阅与对比。</p>
+        <div class="tag-group">
+          <span class="tag">固定入口</span>
+          <span class="tag">稳定路径</span>
+          <span class="tag">无重定向</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span>🧩</span> 用途卡片 · 场景拆分</div>
+        <p>页面适用于以下三类常见用途：</p>
+        <ul style="margin-top: 0.2rem;">
+          <li>了解七星彩的基础数字构成与位置含义</li>
+          <li>作为规则说明页，供新用户快速建立概念</li>
+          <li>结合示例理解组合可能性，不涉及预测或建议</li>
+        </ul>
+        <div class="tag-group">
+          <span class="tag">规则概览</span>
+          <span class="tag">位置说明</span>
+          <span class="tag">组合理解</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span>👤</span> 适合人群</div>
+        <p>主要面向对数字排列感兴趣、希望获得清晰结构化说明的用户。包括：初次接触七星彩概念的学习者、需要快速查阅规则要点的参与者，以及希望理解数字位置逻辑的阅读者。</p>
+        <p style="margin-top: 0.4rem; color: #3a5f78; font-size: 0.92rem;">页面不包含诱导性内容，仅提供事实性信息。</p>
+      </div>
+    </div>
+
+    <!-- 自然链接段落（嵌入核心关键词） -->
+    <div class="link-sentence">
+      <p>若需要查看完整的七星彩数字位置与组合说明，可直接通过 <a href="https://qxc-zhcw.com">七星彩</a> 获取结构稳定的介绍内容。该页面长期采用相同的版式框架，便于形成一致的查阅习惯。</p>
+    </div>
+
+    <!-- 特点 / 信息密度补充 -->
+    <h2>页面结构特点</h2>
+    <ul>
+      <li>标题层级清晰：主标题、卡片标题、段落标题逐级区分</li>
+      <li>留白间距统一：正文宽度控制在 700px 以内，阅读节奏稳定</li>
+      <li>卡片区带微妙悬停反馈，提升浏览体验但不干扰内容</li>
+      <li>全部内容基于事实描述，无模糊承诺或诱导性语言</li>
+    </ul>
+
+    <!-- FAQ 摘要（克制版） -->
+    <div class="faq-summary">
+      <p><strong>常见问题摘要</strong></p>
+      <p style="margin-bottom: 0.2rem;"><strong>Q：</strong> 七星彩的页面会频繁变动吗？<br>
+      <strong>A：</strong> 当前版本以固定样式和内容结构为主，未来若有调整会保持信息一致性。</p>
+      <p style="margin-bottom: 0;"><strong>Q：</strong> 页面是否包含外部跳转或下载？<br>
+      <strong>A：</strong> 不包含。所有内容均为本页展示，仅保留一个指向 <a href="https://qxc-zhcw.com">七星彩</a> 的稳定链接。</p>
+    </div>
+
+    <!-- 简短的提示 / 场景补充 -->
+    <p style="margin-top: 2rem; font-size: 0.9rem; color: #3b5f75;">
+      场景提示：可将本页作为七星彩信息的固定参考点，配合卡片分类快速定位所需内容。
+    </p>
+
+    <div class="meta-note">
+      信息卡片式 · 极简留白 · v1cq
+    </div>
+  </div>
+</body>
+</html>
